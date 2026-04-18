@@ -185,10 +185,16 @@ impl App {
 
     fn render_text(&self) -> Text<'_> {
         let mut spans: Vec<Span> = Vec::new();
+        let mut check = false;
 
         for (i, word) in self.words.iter().enumerate() {
             if i > 0 {
-                spans.push(" ".into());
+                if !check {
+                    spans.push("  ".into());
+                } else {
+                    spans.push(" ".into());
+                    check = false;
+                }
             }
 
             if i == self.current_word_index {
@@ -196,6 +202,7 @@ impl App {
 
                 if word.input.len() >= word.actual.len() {
                     temp.push(Span::from(" ").bg(Color::White));
+                    check = true;
                 } else {
                     temp[word.input.len()] =
                         temp[word.input.len()].clone().black().bg(Color::White);
