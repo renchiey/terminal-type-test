@@ -102,7 +102,9 @@ impl App {
         let word_length = word.input.len();
 
         if word_length == 0 {
-            self.current_word_index -= 1;
+            if self.current_word_index > 0 {
+                self.current_word_index -= 1;
+            }
             self.words[self.current_word_index].input = String::new();
         } else {
             self.words[word_index].input = String::new();

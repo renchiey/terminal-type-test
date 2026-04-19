@@ -55,13 +55,23 @@ where
                 continue;
             }
             match app.current_screen {
-                CurrentScreen::Main => match key.code {
-                    KeyCode::Esc => app.exit(),
-                    KeyCode::Backspace => app.delete_char(),
-                    KeyCode::Char(' ') => app.handle_space_press(),
-                    KeyCode::Char(char) => app.enter_char(char),
-                    _ => {}
-                },
+                CurrentScreen::Main => {
+                    if key.modifiers == event::KeyModifiers::ALT {
+                        match key.code {
+                            KeyCode::Backspace => app.delete_word(),
+                            _ => {}
+                        }
+                        continue;
+                    }
+
+                    match key.code {
+                        KeyCode::Esc => app.exit(),
+                        KeyCode::Backspace => app.delete_char(),
+                        KeyCode::Char(' ') => app.handle_space_press(),
+                        KeyCode::Char(char) => app.enter_char(char),
+                        _ => {}
+                    }
+                }
                 CurrentScreen::Exit => return Ok(true),
             }
         }
