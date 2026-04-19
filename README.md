@@ -1,6 +1,6 @@
 # Terminal Type Test
 
-A terminal-based typing test built with Rust and [ratatui](https://github.com/ratatui-org/ratatui). Inspired by monkeytype.
+A terminal-based typing test built with Rust and [ratatui](https://github.com/ratatui-org/ratatui). Inspired by [monkeytype](https://monkeytype.com/).
 
 ![Terminal Type Test](https://img.shields.io/badge/built_with-Rust-orange)
 
@@ -26,7 +26,7 @@ A terminal-based typing test built with Rust and [ratatui](https://github.com/ra
 Requires [Rust](https://rustup.rs/).
 
 ```bash
-git clone https://github.com/yourusername/terminal_type_test
+git clone https://github.com/renchiey/terminal_type_test
 cd terminal_type_test
 cargo run --release
 ```
